@@ -1,0 +1,24 @@
+<div class="article-container">
+  <form [formGroup]="articleForm" (ngSubmit)="addArticle(article, articleForm.value)" *ngIf="articleForm">
+    <div class="row expanded">
+      <div class="small-12 columns">
+        <label>Article Title
+          <input type="text" name="title" [formControl]="articleForm.controls['title']" formControlName="title">
+        </label>
+        <div class="alert" *ngIf="!articleForm.controls['title'].valid && articleForm.controls['title'].touched">
+          You must specified a title at list 10 characters long
+        </div>
+
+        <label>Description
+          <textarea type="text" id="content" required [formControl]="articleForm.controls['content']" formControlName="content"></textarea>
+        </label>
+        <div class="alert" *ngIf="!articleForm.controls['content'].valid && articleForm.controls['content'].touched">
+          You must specified a title at list 10 characters long
+        </div>
+
+        <input type="submit" class="cta-btn filled" value="Post Article" [disabled]="!articleForm.valid">
+
+      </div>
+    </div>
+  </form>>
+</div>
